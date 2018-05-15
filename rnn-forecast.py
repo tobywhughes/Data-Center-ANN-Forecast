@@ -121,12 +121,8 @@ test = parse_subsets(test, 240+64)
 window_ = 1
 train, train_labels = generate_labels(train, window_)
 test_input, test_labels = generate_labels(test, window_)
-#train, train_validation, train_labels, labels_validation = validation_split(train, train_labels)
-#train, train_validation, test_input = (scaler.fit_transform(entry) for entry in [train, train_validation, test_input])
 
 train, test_input = feed_reshape([train, test_input])
-
-#train_labels, test_labels, labels_validation = feed_reshape([train_labels, test_labels, labels_validation])
 
 model = Sequential()
 model.add(LSTM(100, input_shape=(60, 3)))
@@ -152,12 +148,3 @@ plt.show()
 plt.plot(range(len(train_labels[0])), train_labels[0])
 plt.plot(range(len(train_predict[:,0])), train_predict[:,0])
 plt.show()
-
-# Train Score: 4896332.05 MSE
-# Test Score: 40122089.98 MSE
-
-# Train Score: 6923445.02 MSE
-# Test Score: 23426104.37 MSE
-
-# Train Score: 4050108.11 MSE
-# Test Score: 2322869.67 MSE
